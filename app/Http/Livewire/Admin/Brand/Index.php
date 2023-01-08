@@ -28,6 +28,7 @@ class Index extends Component
         $this->name = null;
         $this->slug = null;
         $this->status = null;
+        $this->brand_id = null;
     }
 
     public function storeBrand()
@@ -76,6 +77,17 @@ class Index extends Component
             'status'=>$this->status == true? 1 : 0,
         ]);
         session()->flash('message', 'Brand Updated successfully');
+        $this->dispatchBrowserEvent('close-modal');
+        $this->resetInput();
+    }
+
+    public function deleteBrand($brand_id){
+        $this->brand_id = $brand_id;
+
+    }
+    public function destroyBrand(){
+        Brand::findOrFail($this->brand_id)->delete();
+        session()->flash('message', 'Brand Deleted successfully');
         $this->dispatchBrowserEvent('close-modal');
         $this->resetInput();
     }
