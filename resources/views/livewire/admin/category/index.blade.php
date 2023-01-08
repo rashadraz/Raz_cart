@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div>
-<div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div wire:ignore.self class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary text-white"  >Yes , Delete</button>
+                    <button type="submit" class="btn btn-primary text-white">Yes , Delete</button>
                 </div>
             </form>
         </div>
@@ -62,14 +62,14 @@
                                             </div>
                                     </a>
                                 </div>
-                                <a href="#" wire:click="deleteCategory({{$category->id}})"  data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                   >
-                                    <div class="ui animated button negative" tabindex="0">
-                                        <div class="visible content text-white">Delete</div>
-                                        <div class="hidden content">
+                                <a href="#" wire:click="deleteCategory({{$category->id}})" class="btn  btn-inverse-danger" data-bs-toggle="modal" data-bs-target="#removeModal"
+                                   >Delete
+                                    {{-- <div class="ui animated button negative" tabindex="0">
+                                        <div class="visible content text-white" wire:click="deleteCategory({{$category->id}})"  data-bs-toggle="modal" data-bs-target="#removeModal">Delete</div>
+                                        <div class="hidden content" wire:click="deleteCategory({{$category->id}})"  data-bs-toggle="modal" data-bs-target="#removeModal">
                                             <i class="eraser icon text-white"></i>
 
-                                        </div>
+                                        </div> --}}
                                 </a>
 
                             </td>
@@ -93,10 +93,10 @@
 
 
 @push('script')
-{{-- <script>
+<script>
     window.addEventListener('close-modal',event => {
-        $('#deleteModal').modal('hide');
+        $('#removeModal').modal('hide');
     });
-    </script> --}}
+    </script>
 
 @endpush

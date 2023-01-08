@@ -104,7 +104,7 @@
               </div>
               <div class="modal-footer">
               <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="submit" class="btn btn-danger text-white">Delete</button>
               </div>
       </form>
     </div>
