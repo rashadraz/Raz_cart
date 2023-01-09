@@ -82,6 +82,10 @@ class ProductFormRequest extends FormRequest
                 'required',
                 'string'
             ],
+            'image'=> [
+                'nullable',
+                // 'mimes:jpeg,jpg,png,gif,svg'
+            ],
         ];
     }
 }

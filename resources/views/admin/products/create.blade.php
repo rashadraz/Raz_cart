@@ -144,7 +144,7 @@
                         <div class="tab-pane border p-3 fade" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                             <div class="mb-3">
                                 <label for="">Upload Product Images</label>
-                                <input type="file" multiple name="image" class="form-control">
+                                <input type="file" multiple name="image[]" class="form-control">
                             </div>
                         </div>
                         

@@ -4,6 +4,9 @@
 
 <div class="row">
     <div class="col-md-12">
+        @if (session('message'))
+        <h6 class="alert alert-success">{{ session('message') }}</h6>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h3>Products
