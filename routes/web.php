@@ -45,10 +45,6 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
         Route::post('/product-color/{prod_color_id}','updateProdColorQty');
         Route::get('/product-color/{prod_color_id}/delete','deleteProdColorQty');
 
-       
-
-
-        
     });
 
     Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function () {
@@ -59,7 +55,24 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
         Route::put('/colors/{color_id}', 'update');
         Route::get('/colors/{color_id}/delete', 'destroy');
 
+    });
+
+    Route::controller(App\Http\Controllers\Admin\SliderController::class)->group(function () {
+        Route::get('sliders','index');
+        Route::get('sliders/create','create');
+        Route::post('sliders/create','store');
+        Route::get('sliders/{slider}/edit','edit');
+        Route::put('sliders/{slider}','update');
+        Route::get('sliders/{slider}/delete','delete');
+
+
         
+
+
+        
+
+       
+
        
 
     });
