@@ -77,7 +77,7 @@
   {{-- no need of jquery cookie --}}
 
     
- 
+    @yield('scripts')
     @livewireScripts
     @stack('script')
 </body>

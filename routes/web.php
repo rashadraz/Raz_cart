@@ -42,7 +42,13 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
         Route::put('/products/{product}','update');
         Route::get('/product-image/{product_image_id}/delete','destroyImage');
         Route::get('/products/{product_id}/delete','destroy');
+        Route::post('/product-color/{prod_color_id}','updateProdColorQty');
+        Route::get('/product-color/{prod_color_id}/delete','deleteProdColorQty');
 
+       
+
+
+        
     });
 
     Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function () {
