@@ -51,7 +51,7 @@
                         <tr>
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
-                            <td>{{ $category->status == 1 ? 'Visible' : 'Hidden' }}</td>
+                            <td>{{ $category->status == 1 ?  'Hidden' : 'Visible' }}</td>
                             <td>
                                 <div>
                                     <a href="{{ url('admin/category/' . $category->id . '/edit') }}" class="">

@@ -41,7 +41,7 @@
                             <div class="mb-3 col-md-6">
                                 <label>Image</label>
                                 <input type="file" class="form-control mt-2" name="image">
-                                <img src="{{asset('uploads/categories/'.$category->image)}}" width="60px" height="60px"/>
+                                <img src="{{asset("$category->image")}}" width="60px" height="60px"/>
                                 @error('image')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -73,7 +73,7 @@
                             <div>
                                 <div class="form-check form-check-success">
                                     <label class="form-check-label ">
-                                      <input type="checkbox" name="status" class=" mt-2 form-check-input" value="{{$category->status == 1 ? 'checked' : ''}}">
+                                      <input type="checkbox" name="status" class=" mt-2 form-check-input" {{$category->status == 1 ? 'checked' : ''}}>
                                       Status
                                     </label>
                                     @error('status')

@@ -32,12 +32,14 @@ class CategoryController
         $category->meta_keyword = $validatedData['meta_keyword'];
         $category->meta_description = $validatedData['meta_description'];
         $category->status = $request->status == true ? 1 : 0;
+
+        $uploadPath = 'uploads/categories/';
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
             $file->move('uploads/categories/',$filename);
-            $category->image =  $filename;
+            $category->image =  $uploadPath.$filename;
         }
        
        
@@ -65,6 +67,7 @@ class CategoryController
         $category->meta_description = $validatedData['meta_description'];
         $category->status = $request == true ? 1 : 0;
         if ($request->hasFile('image')) {
+            $uploadPath = 'uploads/categories/';
             $path = 'uploads/categories/'.$category->image;
             if(File::exists($path)){
                 File::delete($path);
@@ -73,11 +76,11 @@ class CategoryController
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
             $file->move('uploads/categories/',$filename);
-            $category->image =  $filename;
+            $category->image =  $uploadPath.$filename;
         }
        
        
-        $category->save();
+        $category->update();
 
         return redirect('admin/category')->with('message','Category Updated Successfully');
     }
