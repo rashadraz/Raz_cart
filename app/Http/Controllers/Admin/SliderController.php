@@ -19,7 +19,7 @@ class SliderController extends Controller
     {
         return view('admin.slider.create');
     }
-    public function store(SliderFormRequest $request)
+    public function store(SliderFormRequest $request ,Slider $slider)
     {
         $validatedData = $request->validated();
 
@@ -38,7 +38,7 @@ class SliderController extends Controller
         Slider::Create([
             'title'=>$validatedData['title'],
             'description'=>$validatedData['description'],
-            'image'=>$validatedData['image'],
+            'image'=>$validatedData['image']?? $slider->image,
             'status'=>$validatedData['status'],
         ]);
 
