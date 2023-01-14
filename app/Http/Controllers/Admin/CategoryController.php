@@ -23,6 +23,7 @@ class CategoryController
     }
     public function store(CategoryFormRequest $request)
     {
+      
         $validatedData = $request->validated();
         $category = new Category;
         $category->name = $validatedData['name'];
@@ -31,7 +32,7 @@ class CategoryController
         $category->meta_title = $validatedData['meta_title'];
         $category->meta_keyword = $validatedData['meta_keyword'];
         $category->meta_description = $validatedData['meta_description'];
-        $category->status = $request->status == true ? 1 : 0;
+        $category->status = $request->status == "on" ? '1' : '0';
 
         $uploadPath = 'uploads/categories/';
         if ($request->hasFile('image')) {
@@ -56,16 +57,15 @@ class CategoryController
     public function update(CategoryFormRequest $request,$category)
     {
         $category = Category::findOrFail($category);
-
+       
         $validatedData = $request->validated();
-
         $category->name = $validatedData['name'];
         $category->slug = Str::slug($validatedData['slug']);
         $category->description = $validatedData['description'];
         $category->meta_title = $validatedData['meta_title'];
         $category->meta_keyword = $validatedData['meta_keyword'];
         $category->meta_description = $validatedData['meta_description'];
-        $category->status = $request == true ? 1 : 0;
+        $category->status =$request->status  == "on" ? '1' : '0';
         if ($request->hasFile('image')) {
             $uploadPath = 'uploads/categories/';
             $path = 'uploads/categories/'.$category->image;

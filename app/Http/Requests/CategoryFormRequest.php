@@ -24,13 +24,17 @@ class CategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|max:255',
-            'slug'=>'required|max:255',
-            'description' =>'required|max:255',
-            'image'=>'image|nullable',
-            'meta_title' =>'nullable|max:255',
-            'meta_keyword' =>'nullable|max:255',
-            'meta_description' =>'nullable|max:255',
+            'name' =>[
+                'required',
+                'max:255'
+            ],
+            'slug'=>['required','max:255'],
+            'description' =>['required','max:255'],
+            'image'=>['image','nullable'],
+            'meta_title' =>['nullable','max:255'],
+            'meta_keyword' =>['nullable','max:255'],
+            'meta_description' =>['nullable','max:255'],
+            
 
         ];
     }

@@ -70,17 +70,13 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                             </div>
-                            <div>
-                                <div class="form-check form-check-success">
-                                    <label class="form-check-label ">
-                                      <input type="checkbox" name="status" class=" mt-2 form-check-input" {{$category->status == 1 ? 'checked' : ''}}>
-                                      Status
-                                    </label>
-                                    @error('status')
-                                    <small class="text-danger">{{ $message }}</small>
+                            <div class="mb-3 col-md-12">
+                                <label>Status</label>
+                                <input type="checkbox" name="status" {{$category->status == "1" ? 'checked' : ''}}  >
+                                @error('status')
+                                <small class="text-danger">{{ $message }}</small>
                                 @enderror
-                                  </div>
-                            </div>
+                              </div>
                             <div class="mb-3 col-md-3 float-left">
                                 <button class="btn btn-primary  text-white " type="submit">Update</button>
                             </div>

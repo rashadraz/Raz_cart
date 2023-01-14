@@ -23,7 +23,7 @@ class Index extends Component
     public function destroyCategory(){
         $category = Category::find($this->category_id);
 
-        $path = 'uploads/categories/'.$category->image;
+        if($path = 'uploads/categories/'.$category->image)
         if(File::exists($path)){
             File::delete($path);
         }

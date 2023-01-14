@@ -37,7 +37,7 @@ class Index extends Component
         Brand::create([
             'name'=>$this->name,
             'slug'=>Str::slug($this->slug),
-            'status'=>$this->status == true? 1 : 0,
+            'status'=>$this->status == true ? 1 : 0,
         ]);
         session()->flash('message', 'Brand Added successfully');
         $this->dispatchBrowserEvent('close-modal');
@@ -74,7 +74,7 @@ class Index extends Component
         Brand::findOrFail($this->brand_id)->update([
             'name'=>$this->name,
             'slug'=>Str::slug($this->slug),
-            'status'=>$this->status == true? 1 : 0,
+            'status'=>$this->status == true ? 1 : 0,
         ]);
         session()->flash('message', 'Brand Updated successfully');
         $this->dispatchBrowserEvent('close-modal');
