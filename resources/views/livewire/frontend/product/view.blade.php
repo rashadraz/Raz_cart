@@ -5,32 +5,53 @@
                 <div class="col-md-5 mt-3">
                     <div class="bg-white border">
                         @if ($product->productImages)
-                        <img src="{{asset($product->productImages[0]->image)}}" class="w-100" alt="Img">
+                            <img src="{{ asset($product->productImages[0]->image) }}" class="w-100" alt="Img">
                         @else
-                        No Image to display    
+                            No Image to display
                         @endif
                     </div>
                 </div>
                 <div class="col-md-7 mt-3">
                     <div class="product-view">
                         <h4 class="product-name">
-                           {{$product->name}}
-                            <label class="label-stock bg-success">In Stock</label>
+                            {{ $product->name }}
+
                         </h4>
                         <hr>
                         <p class="product-path">
-                            Home /{{$product->category->name}} / {{$product->name}}
+                            Home /{{ $product->category->name }} / {{ $product->name }}
                         </p>
                         <div>
-                            <span class="selling-price">{{$product->selling_price}}</span>
-                            <span class="original-price">{{$product->original_price}}</span>
+                            <span class="selling-price">{{ $product->selling_price }}</span>
+                            <span class="original-price">{{ $product->original_price }}</span>
                         </div>
                         <div>
-                            @if ($product->productColors)
-                                @foreach ($product->productColors as $colorItem)
-                                <input type="radio" name="colorSelection" value="{{$colorItem->id}}"> {{$colorItem->color->name}}
-                                    
-                                @endforeach
+                            @if ($product->productColors->count() > 0)
+                                @if ($product->productColors)
+                                    @foreach ($product->productColors as $colorItem)
+                                        {{-- <input type="radio" name="colorSelection" value="{{$colorItem->id}}"> {{$colorItem->color->name}}       --}}
+                                        <label class="colorSelectionLabel"
+                                            style="background-color:{{ $colorItem->color->code }}"
+                                            wire:click="colorSelected({{ $colorItem->id }})">
+                                            {{ $colorItem->color->name }}
+                                        </label>
+                                    @endforeach
+                                @endif
+                                <div>
+                                    @if ($this->productColorSelectedQuantity == 'outOfStock')
+                                        <label class="btn-sm py-1 mt-2 text-white  bg-danger">Out of Stock</label>
+                                    @elseif ($this->productColorSelectedQuantity > 0)
+                                        <label class="btn-sm py-1 mt-2 text-white bg-success">In Stock</label>
+                                    @endif
+                                </div>
+                            @else
+                                @if ($product->quantity)
+                                    <label class="btn-sm py-1 mt-2 text-white bg-success">In Stock</label>
+                                @else
+                                    <label class="btn-sm py-1 mt-2 text-white  bg-danger">Out of Stock</label>
+                                @endif
+
+
                             @endif
                         </div>
                         <div class="mt-2">
@@ -61,7 +82,7 @@
                         </div>
                         <div class="card-body">
                             <p>
-                                {!!$product->description!!}
+                                {!! $product->description !!}
                             </p>
                         </div>
                     </div>

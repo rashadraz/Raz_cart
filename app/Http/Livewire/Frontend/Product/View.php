@@ -8,7 +8,18 @@ class View extends Component
 
 
 {
-    public $category , $product;
+    public $category , $product , $productColorSelectedQuantity;
+
+
+    public function colorSelected($productColorId)
+    {
+        $productColor =$this->product->productColors()->where('id',$productColorId)->first();
+        $this->productColorSelectedQuantity = $productColor->quantity;
+
+        if($this->productColorSelectedQuantity == 0){
+            $this->productColorSelectedQuantity = 'outOfStock';
+        }
+    }
     public function mount($category , $product)
     {
         $this->category = $category;
