@@ -15,6 +15,7 @@ class Category extends Model
         'name',
         'slug',
         'description',
+        
         'image',
         'meta_title',
         'meta_keyword',
@@ -25,5 +26,9 @@ class Category extends Model
     public function products()
     {
         return $this->hasMany(Product::class,'category_id','id');
+    }
+    public function brands()
+    {
+        return $this->hasMany(Brand::class,'category_id','id')->where('status',0);
     }
 }

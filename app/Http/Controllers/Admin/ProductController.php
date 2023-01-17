@@ -30,6 +30,7 @@ class ProductController extends Controller
     }
     public function store(ProductFormRequest $request)
     {
+       
         $valdiatedData = $request->validated();
 
         $category = Category::findOrFail($valdiatedData['category_id']);
@@ -38,7 +39,7 @@ class ProductController extends Controller
             'category_id' => $valdiatedData['category_id'],
             'name' => $valdiatedData['name'],
             'slug' => Str::slug($valdiatedData['slug']),
-            'brand_id' => $valdiatedData['brand_id'],
+            'brand' => $valdiatedData['brand_id'],
             'small_description' => $valdiatedData['small_description'],
             'description' => $valdiatedData['description'],
             'original_price' => $valdiatedData['original_price'],
@@ -102,7 +103,7 @@ class ProductController extends Controller
                 'category_id' => $valdiatedData['category_id'],
                 'name' => $valdiatedData['name'],
                 'slug' => Str::slug($valdiatedData['slug']),
-                'brand_id' => $valdiatedData['brand_id'],
+                'brand' => $valdiatedData['brand_id'],
                 'small_description' => $valdiatedData['small_description'],
                 'description' => $valdiatedData['description'],
                 'original_price' => $valdiatedData['original_price'],
