@@ -1,6 +1,9 @@
 <div>
     <div class="py-3 py-md-5 ">
         <div class="container">
+            @if (session('message'))
+            <h6 class="alert alert-success">{{ session('message') }}</h6>
+            @endif
             <div class="row">
                 <div class="col-md-5 mt-3">
                     <div class="bg-white border">
@@ -62,8 +65,13 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <a href="" class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                            <a href="" class="btn btn1"> <i class="fa fa-heart"></i> Add To Wishlist </a>
+                            <button href="" type="button"  class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</button>
+                            <button href="" type="button" wire:click="addToWishList({{ $product->id}})" class="btn btn1">
+                                <span wire:loading.remove>
+                                    <i class="fa fa-heart"></i> Add To Wishlist 
+                                </span>
+                                <span wire:loading  wire:target="addToWishList">Adding...</span>
+                                </button>
                         </div>
                         <div class="mt-3">
                             <h5 class="mb-0">Small Description</h5>
