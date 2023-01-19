@@ -2,7 +2,7 @@
     <div class="py-3 py-md-5 ">
         <div class="container">
             @if (session('message'))
-            <h6 class="alert alert-success">{{ session('message') }}</h6>
+                <h6 class="alert alert-success">{{ session('message') }}</h6>
             @endif
             <div class="row">
                 <div class="col-md-5 mt-3">
@@ -60,18 +60,22 @@
                         <div class="mt-2">
                             <div class="input-group">
                                 <span class="btn btn1" wire:click="decrementQuantity"><i class="fa fa-minus"></i></span>
-                                <input type="text" wire:model="quantityCount" value="{{$this->quantityCount}}" class="input-quantity" readonly />
-                                <span class="btn btn1"  wire:click="incrementQuantity"><i class="fa fa-plus"></i></span>
+                                <input type="text" wire:model="quantityCount" value="{{ $this->quantityCount }}"
+                                    class="input-quantity" readonly />
+                                <span class="btn btn1" wire:click="incrementQuantity"><i class="fa fa-plus"></i></span>
                             </div>
                         </div>
                         <div class="mt-2">
-                            <button href="" type="button"  class="btn btn1"> <i class="fa fa-shopping-cart"></i> Add To Cart</button>
-                            <button href="" type="button" wire:click="addToWishList({{ $product->id}})" class="btn btn1">
+                            <button  type="button" wire:click="addToCart({{$product->id}})" class="btn btn1">
+                                <i class="fa fa-shopping-cart"></i> Add To Cart
+                            </button>
+                            <button href="" type="button" wire:click="addToWishList({{ $product->id }})"
+                                class="btn btn1">
                                 <span wire:loading.remove wire:target="addToWishList">
-                                    <i class="fa fa-heart"></i> Add To Wishlist 
+                                    <i class="fa fa-heart"></i> Add To Wishlist
                                 </span>
-                                <span wire:loading  wire:target="addToWishList">Adding...</span>
-                                </button>
+                                <span wire:loading wire:target="addToWishList">Adding...</span>
+                            </button>
                         </div>
                         <div class="mt-3">
                             <h5 class="mb-0">Small Description</h5>
