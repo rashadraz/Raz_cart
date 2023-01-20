@@ -17,4 +17,14 @@ class Cart extends Model
         'product_color_id',
         'quantity'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id','id');
+    }
+
+    public function productColor()
+    {
+        return $this->belongsTo(ProductColor::class, 'product_color_id','id'); 
+    }
 }

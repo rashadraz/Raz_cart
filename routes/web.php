@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\WishlistController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +31,10 @@ Route::get('/collections/{category_slug}',[App\Http\Controllers\Frontend\Fronten
 Route::get('/collections/{category_slug}/{product_slug}',[App\Http\Controllers\Frontend\FrontendController::class,'productView']);
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('wishlist',[WishlistController::class,'index']);
+   
+ Route::get('wishlist',[WishlistController::class,'index']);
+ Route::get('cart',[CartController::class,'index']);
+    
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
