@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CartShow extends Component
 {
-    public $cart;
+    public $cart , $totalPrice = 0;
 
     // public function decrementQuantity(int $cartId)
     // {
@@ -58,34 +58,33 @@ class CartShow extends Component
     // }
 
     public function decrementQuantity(int $cartId)
-{
-    $cartData = Cart::where('id',$cartId)->where('user_id', auth()->user()->id)->first();
-    if($cartData)
     {
-        if($cartData->quantity > 1){
+        $cartData = Cart::where('id', $cartId)->where('user_id', auth()->user()->id)->first();
+        if ($cartData) {
+            if ($cartData->quantity > 1) {
 
-            $cartData->decrement('quantity');
+                $cartData->decrement('quantity');
+                $this->dispatchBrowserEvent('message', [
+                    'text' => 'Quantity Updated',
+                    'type' => 'success',
+                    'status' => 200
+                ]);
+            } else {
+                $this->dispatchBrowserEvent('message', [
+                    'text' => 'Quantity cannot be less than 1',
+                    'type' => 'warning',
+                    'status' => 200
+                ]);
+            }
+        } else {
+
             $this->dispatchBrowserEvent('message', [
-                'text' => 'Quantity Updated',
-                'type' => 'success',
-                'status' => 200
-            ]);
-        }else{
-            $this->dispatchBrowserEvent('message', [
-                'text' => 'Quantity cannot be less than 1',
-                'type' => 'warning',
-                'status' => 200
+                'text' => 'Something Went Wrong!',
+                'type' => 'error',
+                'status' => 404
             ]);
         }
-    }else{
-
-        $this->dispatchBrowserEvent('message', [
-            'text' => 'Something Went Wrong!',
-            'type' => 'error',
-            'status' => 404
-        ]);
     }
-}
 
 
     public function incrementQuantity(int $cartId)
@@ -103,9 +102,9 @@ class CartShow extends Component
                         'type' => 'success',
                         'status' => 200
                     ]);
-                }else{
+                } else {
                     $this->dispatchBrowserEvent('message', [
-                        'text' => 'Only '.$productColor->quantity.' Quantity Available',
+                        'text' => 'Only ' . $productColor->quantity . ' Quantity Available',
                         'type' => 'warning',
                         'status' => 200
                     ]);
@@ -119,9 +118,9 @@ class CartShow extends Component
                         'type' => 'success',
                         'status' => 200
                     ]);
-                }else{
+                } else {
                     $this->dispatchBrowserEvent('message', [
-                        'text' => 'Only '.$cartData->product->quantity.' Quantity Available',
+                        'text' => 'Only ' . $cartData->product->quantity . ' Quantity Available',
                         'type' => 'warning',
                         'status' => 200
                     ]);
@@ -142,5 +141,25 @@ class CartShow extends Component
         return view('livewire.frontend.cart.cart-show', [
             'cart' => $this->cart
         ]);
+    }
+    public function removeCartItem(int $cartId)
+    {
+        $cartRemoveData = Cart::where('user_id',auth()->user()->id)->where('id',$cartId)->first();
+        if( $cartRemoveData){
+            $cartRemoveData->delete();
+            $this->emit('CartAddedUpdated');
+
+            $this->dispatchBrowserEvent('message', [
+                'text' => 'Product Removed successfully',
+                'type' => 'success',
+                'status' => 200
+            ]);
+        }else{
+            $this->dispatchBrowserEvent('message', [
+                'text' => 'Something went wrong',
+                'type' => 'info',
+                'status' => 204
+            ]);
+        }
     }
 }
