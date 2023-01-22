@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Frontend\Cart\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
 
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +36,11 @@ Route::middleware(['auth'])->group(function(){
    
  Route::get('wishlist',[WishlistController::class,'index']);
  Route::get('cart',[CartController::class,'index']);
+ Route::get('/checkout',[CheckoutController::class,'index']);
     
 });
+
+Route::get('thank-you',[FrontendController::class,'thankyou']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
