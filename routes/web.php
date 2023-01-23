@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\WishlistController;
 
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,9 @@ Route::middleware(['auth'])->group(function(){
  Route::get('wishlist',[WishlistController::class,'index']);
  Route::get('cart',[CartController::class,'index']);
  Route::get('/checkout',[CheckoutController::class,'index']);
+ Route::get('/orders',[OrderController::class,'index']);
+ Route::get('/orders/{orderId}',[OrderController::class,'show']);
+
     
 });
 
@@ -89,4 +93,15 @@ Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
     });
 
     Route::get('/brands',App\Http\Livewire\Admin\Brand\Index::class);
+
+
+    Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function () {
+        Route::get('/orders', 'index');
+        Route::get('/orders/{orderId}', 'show');
+      
+
+    });
+
+
+    
 });
