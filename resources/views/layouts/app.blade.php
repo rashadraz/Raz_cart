@@ -21,6 +21,12 @@
     <!-- Styles -->
     <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/custom.css') }}" rel="stylesheet">
+    {{-- Owl CArousel --}}
+    <link rel="stylesheet" href="{{ asset('/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/owl.theme.default.min.css') }}">
+    {{-- Exzoom Product Image--}}
+    <link rel="stylesheet" href="{{ asset('/assets/exzoom/jquery.exzoom.css') }}">
+    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- CSS -->
@@ -59,6 +65,12 @@
 
         })
     </script>
+
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+
+    <script src="{{ asset('assets/exzoom/jquery.exzoom.js') }}"></script>
+
+    @yield('script')
 
 
     @livewireScripts
