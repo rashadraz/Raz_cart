@@ -155,6 +155,16 @@
                                             <div class="mb-3">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
+                                                        <input type="checkbox" class="form-check-input"   {{ $product->featured == 1 ? 'checked' : '' }} name="featured">
+                                                        Featured
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
                                                         <input type="checkbox" class="form-check-input"
                                                             {{ $product->status == 1 ? 'checked' : '' }} name="status">
                                                         Status

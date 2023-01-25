@@ -35,6 +35,7 @@ Route::get('/collections','categories');
 Route::get('/collections/{category_slug}','products');
 Route::get('/collections/{category_slug}/{product_slug}','productView');
 Route::get('/new-arrivals','newArrival');
+Route::get('/featured-products','featuredProducts')->name('featured');
 });
 
 

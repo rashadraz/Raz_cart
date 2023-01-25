@@ -66,4 +66,11 @@ class FrontendController extends Controller
         return view('frontend.pages.new-arrival',compact('newArrivalsProducts'));
     }
 
+    public function featuredProducts()
+    {
+        $featuredProducts = Product::where('featured',1)->latest()->get();
+
+        return view('frontend.pages.featured-products',compact('featuredProducts'));
+    }
+
 }
