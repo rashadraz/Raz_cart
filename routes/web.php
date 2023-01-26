@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -56,6 +57,12 @@ Route::get('thank-you',[FrontendController::class,'thankyou']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware('auth','isAdmin')->group(function(){
+
+    Route::get('settings',[SettingController::class,'index']);
+    Route::post('settings',[SettingController::class,'store']);
+
+   
+
     Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
     //Category Routes
