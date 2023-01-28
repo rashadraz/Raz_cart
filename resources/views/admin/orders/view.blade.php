@@ -18,6 +18,7 @@
                         <h4 class="text-primary">
                             <i class="fa fa-shopping-cart text-dark"></i> My Order Details
                             <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm float-end text-white mx-1">Back</a>
+                            <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}" class="btn btn-dark btn-sm float-end mx-1">Email Invoice </a>
                             <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="btn btn-info btn-sm float-end mx-1">Download Invoice</a>
                             <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank" class="btn btn-primary btn-sm float-end mx-1 text-white">View Invoice</a>
                         </h4>
@@ -38,7 +39,7 @@
                             <div class="col-md-6">
                                 <h5>User Details</h5>
                                 <hr>
-                                <h6>Full Name: {{ $order->fullname }}</h6>
+                                <h6>Full Name: {{ $order->fulname }}</h6>
                                 <h6>Email Id: {{ $order->email }}</h6>
                                 <h6>Phone: {{ $order->phone }}</h6>
                                 <h6>Pincode: {{ $order->pincode }}</h6>

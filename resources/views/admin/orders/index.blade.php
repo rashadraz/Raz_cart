@@ -60,7 +60,7 @@
                                         <td>{{ $item->created_at->diffForHumans() }}</td>
                                         <td>{{ $item->status_message }}</td>
                                         <td>
-                                            <a href="{{ url('admin/orders/' . $item->id) }}" class="btn btn-primary btn-sm">View</a>
+                                            <a href="{{ url('admin/orders/'.$item->id) }}" class="btn btn-primary btn-sm">View</a>
                                         </td>
 
                                     </tr>

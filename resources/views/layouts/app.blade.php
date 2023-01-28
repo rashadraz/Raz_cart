@@ -52,8 +52,10 @@
         <main>
             @yield('content')
         </main>
-
-        @include('layouts.inc.frontend.footer')
+        <footer>
+            @include('layouts.inc.frontend.footer')
+        </footer>
+        
     </div>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-3.6.3.min.js') }}"></script>
