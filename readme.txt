@@ -1,0 +1,12 @@
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailspons.com
+MAIL_PORT=2525
+MAIL_USERNAME=0b85bfd6c68547b8a6e4
+MAIL_PASSWORD=94dd83e24c1a4e2f811341b128ba80e9
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="rashadgodly@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+
+
+//copy this for sending mail
