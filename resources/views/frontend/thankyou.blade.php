@@ -47,6 +47,10 @@
     </div>
       <h1>Success</h1> 
       <p>We received your purchase request;<br/> we'll be in touch shortly!</p>
+      <div class="pt-4">
+        <a href="{{url('/')}}" class="btn btn-info text-white">HOME PAGE</a>
+      </div>
     </div>
+   
 
 @endsection 

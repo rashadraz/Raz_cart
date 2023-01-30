@@ -53,10 +53,10 @@
         <div class="collapse" id="auth">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item {{Request::is('admin/users') ? 'active' : ''}}"> <a class="nav-link" href="{{url('admin/users')}}"> View Users</a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
+            {{-- <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
             <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li> --}}
           </ul>
         </div>
       </li>

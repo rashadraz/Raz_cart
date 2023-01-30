@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Frontend\Checkout;
 
+use App\Mail\PlaceOrderMailable;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Orderitem;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -29,6 +31,9 @@ class CheckoutShow extends Component
     {
         $this->fullname = auth()->user()->name;
         $this->email = auth()->user()->email;
+        $this->phone = auth()->user()->userDetail->phone ?? '';
+        $this->pincode = auth()->user()->userDetail->pin_code ?? '';
+        $this->address = auth()->user()->userDetail->address ?? '';
         $this->totalProductAmount = $this->totalProductAmount();
         return view('livewire.frontend.checkout.checkout-show',[
             'totalProductAmount'=> $this->totalProductAmount
@@ -63,6 +68,16 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if($codOrder){
             Cart::where('user_id',auth()->user()->id)->delete();
+
+            try{
+                //MAil sent Successfully
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+
+            }
+            catch(\Exception $e){
+                //Something Went Wrong
+            }
 
             $this->dispatchBrowserEvent('message', [
                 'text' =>'Order Placed Successfully',
@@ -133,6 +148,16 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if($codOrder){
             Cart::where('user_id',auth()->user()->id)->delete();
+
+            try{
+                //MAil sent Successfully
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+
+            }
+            catch(\Exception $e){
+                //Something Went Wrong
+            }
 
             $this->dispatchBrowserEvent('message', [
                 'text' =>'Order Placed Successfully',

@@ -50,9 +50,9 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{url('profile')}}"><i class="fa fa-user"></i> Profile</a></li>
 
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-list"></i> My Orders</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-heart"></i> My Wishlist</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                            <li><a class="dropdown-item" href="{{url('orders')}}"><i class="fa fa-list"></i> My Orders</a></li>
+                            <li><a class="dropdown-item" href="{{url('wishlist')}}"><i class="fa fa-heart"></i> My Wishlist</a></li>
+                            <li><a class="dropdown-item" href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -94,7 +94,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('featured')}}">Featured Products</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#">Electronics</a>
                     </li>
                     <li class="nav-item">
@@ -108,7 +108,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Appliances</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
