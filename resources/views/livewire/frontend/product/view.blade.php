@@ -121,6 +121,60 @@
     </div>
 </div>
 
+<div class="py-3 py-md-5 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <h3>Related
+                    @if ($category)
+                    {{$category->name}}
+                        
+                    @endif
+                     Products</h3>
+                <div class="underline"></div>
+            </div>
+                @forelse ($category->relatedProducts->take(15) as $relatedProductItem )
+                <div class="col-md-3">
+                    <div class="product-card">
+                        <div class="product-card-img">
+                          
+
+                            @if ($relatedProductItem->productImages->count() > 0)
+                                <a
+                                    href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                    {{-- {{$relatedProductItem->name}} --}}
+
+                                    <img src="{{ asset($relatedProductItem->productImages[0]->image) }}"
+                                        alt="{{ $relatedProductItem->name }}">
+                                </a>
+                            @endif
+                        </div>
+                        <div class="product-card-body">
+                            <p class="product-brand">{{ $relatedProductItem->brand }}</p>
+                            <h5 class="product-name">
+                                <a
+                                    href="{{ url('/collections/' . $relatedProductItem->category->slug . '/' . $relatedProductItem->slug) }}">
+                                    {{ $relatedProductItem->name }}
+                                </a>
+                            </h5>
+                            <div>
+                                <span class="selling-price">${{ $relatedProductItem->selling_price }}</span>
+                                <span class="original-price">${{ $relatedProductItem->original_price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>                 
+                    @empty
+                    <div class="col-md-12 mx-auto">
+                        <div class="p-2">
+                            <h5>No Product's Available</h5>
+                        </div>
+                    </div>    
+                    @endforelse
+        </div>
+    </div>
+</div>
+
 @push('scripts')
 
 <script>
